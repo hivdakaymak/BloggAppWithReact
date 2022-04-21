@@ -1,47 +1,48 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import ReactDOM from "react-dom";
 import AppRouter from "./routers/AppRouter";
 import "./App.css";
-import { createStore } from "redux";
-import { type } from "@testing-library/user-event/dist/type";
+import { createStore, combineReducers } from "redux";
 
-const initialState = {
-  count: 0,
+const state = {
+    blogs:[{
+        id: 1,
+        title: 'Blog Title 1',
+        description : "Blog Description",
+        dateAdded: 0
+    }],
+    auth:{
+        userid: 1,
+        username: 'miray',
+        email:'miirayazz@gmail.com'
+    }
+}
+
+const blogState = []
+
+const blogReducer = (state = blogState,action) =>{ 
+    switch (action.type){
+        default:
+            return state
+    }
+
+}
+
+const authState =  auth:{
+    userid: 1,
+    username: 'miray',
+    email:'miirayazz@gmail.com'
 };
 
-const store = (state = initialState, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      const incrementBy =
-        typeof action.incrementBy === "number" ? action.incrementBy : 1;
-      return {
-        count: state.count + incrementBy,
-      };
-    case "DECREMENT":
-      return {
-        count: state.count - 1,
-      };
-    case "RESET":
-      return {
-        count: 0,
-      };
-    default:
-      return state;
-  }
-};
+const authReducer = (state = authState, action) => {
+    switch (action.type){
+        default:
+            return state
+    }
+}
 
-console.log(store.getState());
 
-// store.dispatch({
-//   type: "INCREMENT",
-//   incrementBy: 10,
-// });
-
-// store.dispatch({
-//   type: "DECREMENT",
-// });
+const store = createStore(authReducer)
 
 ReactDOM.render(<AppRouter />, document.getElementById("root"));
 
