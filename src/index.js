@@ -90,6 +90,8 @@ store.subscribe(() => {
 
 store.dispatch(removeBlog({id: blog1.blog.id}))
 
+store.dispatch(editBlog(blog2.blog.id,{title:'updated title', description:'Updated description'}))
+
 ReactDOM.render(<AppRouter />, document.getElementById("root"));
 
 ServiceWorker.unregister();
