@@ -1,19 +1,11 @@
-const authState = {
-    auth: {
-      userid: 1,
-      username: "miray",
-      email: "miirayazz@gmail.com",
-    },
-  };
-  
-  const authReducer = (state = authState, action) => {
+const authState = {};
+
+const authReducer = (state = authState, action) => {
     switch (action.type) {
-      case "ADD_BLOG":
-        return [...state, action.blog];
-      default:
-        return state;
+        default:
+            return state
     }
-  };
- 
-  
-  export default authReducer
+}
+
+
+export default authReducer;

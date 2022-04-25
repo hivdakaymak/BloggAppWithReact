@@ -1,38 +1,24 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 
-export const state = {
-  blogs: [
+export const addBlog = ({ title='', description='',dateAdded=0 }) => ({
+    type: "ADD_BLOG",
+    blog: {
+        id: uuid(),
+        title: title,
+        description: description,
+        dateAdded: dateAdded
+    }
+})
+
+export const removeBlog = ({ id }) => (
     {
-      id: uuid(),
-      title: title,
-      description: description,
-      dateAdded: dateAdded,
-    },
-  ],
-  auth: {
-    userid: 1,
-    username: "miray",
-    email: "miirayazz@gmail.com",
-  },
-};      
+        type: "REMOVE_BLOG",
+        id: id
+    }
+)
 
-export const addBlog = ({ title = "", description = "", dateAdded = 0 }) => ({
-  type: "ADD_BLOG",
-  blog: {
-    id: 2,
-    title: "aa",
-    description: "bb",
-    dateAdded: 0,
-  },
-});
-
-export const removeBlog = ({ id }) => ({
-  type: "REMOVE_BLOG",
-  id: id,
-});
-
-export const editBlog = (id, updates) => ({
-  type: "EDITED_BLOG",
-  id,
-  updates,
-});
+export const editBlog = (id,updates) => ({
+    type: "EDIT_BLOG",
+    id,
+    updates
+})
