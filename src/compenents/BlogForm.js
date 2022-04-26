@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 export default class BlogForm extends Component {
     state = {
         title: '',
-        description:''
+        description:'',
+        dateAdded: Date.now(),
+        error: '',
     }
 
     onTitleChange = (e) => {
@@ -15,11 +17,20 @@ export default class BlogForm extends Component {
         const description = e.target.value;
         this.setState(() => ({description}))
     }
+    onSubmit = (e) => {
+        e.preventDefault();
+        if(!this.state.title || !this.state.description){
+this.setState({error: 'Hata'})
+        }else{
+            this.setState({error: ''})
+            console.log("Submitted");
+        }
+    }
   render() {
     return (
       <div>
-       
-       <form>
+       {this.state.error && <p>{this.state.error}</p>}
+       <form onSubmit={this.onSubmit}>
            <div>
                <input
                placeholder='Title'
@@ -35,6 +46,11 @@ export default class BlogForm extends Component {
                >
 
                </textarea>
+           </div>
+           <div>
+               <button type='submit'>
+                   Save Change
+               </button>
            </div>
        </form>
       </div>
