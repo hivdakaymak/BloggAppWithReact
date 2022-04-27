@@ -26,3 +26,11 @@ database.ref().set({
         surname: "Kaymak"
     }
 })
+
+// database.ref().set("Yeni kayıt")
+
+// database.ref().set({
+//   title: "Blog Title "
+// })
+
+database.ref("title").set("Hello")
