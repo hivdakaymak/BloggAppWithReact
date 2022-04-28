@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 
 export default class BlogForm extends Component {
-  state = {
-    title: "",
-    description: "",
-    error: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: props.blog? props.blog.title: '',
+      description: props.blog? props.blog.description:'',
+      error: "",
+    };
+  }
 
   onTitleChange = (e) => {
     const title = e.target.value;

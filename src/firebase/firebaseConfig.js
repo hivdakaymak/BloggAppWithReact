@@ -19,34 +19,59 @@ const app = initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref().set({
-  title: "Blog Title",
-  description: "Blog Description",
-  author: {
-    name: "Miray",
-    surname: "Kaymak",
-  },
-}).then(() => {
-  console.log("Kayıt eklendi")
-  database.ref("tags")
-  .set(["angular"])
+// database
+//   .ref()
+//   .set({
+//     title: "Blog Title",
+//     description: "Blog Description",
+//     author: {
+//       name: "Miray",
+//       surname: "Kaymak",
+//     },
+//   })
+//   .then(() => {
+//     database
+//       .ref("tags")
+//       .set(["angular"])
+//       .then(() => {
+//         console.log("Etiketler eklendi");
+//       })
+//       .catch((e) => {
+//         console.log("hata", e);
+//       });
+//   })
+//   .catch((e) => {
+//     console.log("hata", e);
+//   });
+
+// database
+//   .ref("title")
+//   .remove()
+//   .then(() => {
+//     console.log("Başarılı");
+//   })
+//   .catch((e) => {
+//     console.log("err");
+//   });
+
+
+// database
+//   .ref("outhor/name")
+//   .remove()
+//   .then(() => {
+//     console.log("Başarılı");
+//   })
+//   .catch((e) => {
+//     console.log("err");
+//   });
+
+
+database
+  .ref(" ")
+  .remove()
   .then(() => {
-    console.log("Etiketler eklendi")
-  }).catch((e) => {
-    console.log("hata", e);
+    console.log("Başarılı");
   })
-
-})
-.catch((e) => {
-  console.log("hata",e)
-});
-
-database.ref("title").set("Hello");
-
-
-
-
-
-
-
-
+  .catch((e) => {
+    console.log("err");
+  });
