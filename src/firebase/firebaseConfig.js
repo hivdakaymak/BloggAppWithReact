@@ -19,30 +19,55 @@ const app = initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-// database
-//   .ref()
-//   .set({
-//     title: "Blog Title",
-//     description: "Blog Description",
-//     author: {
-//       name: "Miray",
-//       surname: "Kaymak",
-//     },
-//   })
-//   .then(() => {
-//     database
-//       .ref("tags")
-//       .set(["angular"])
-//       .then(() => {
-//         console.log("Etiketler eklendi");
-//       })
-//       .catch((e) => {
-//         console.log("hata", e);
-//       });
-//   })
-//   .catch((e) => {
-//     console.log("hata", e);
-//   });
+database
+  .ref()
+  .set({
+    title: "Blog Title",
+    description: "Blog Description",
+    author: {
+      name: "Miray",
+      surname: "Kaymak",
+    },
+  })
+  .then(() => {
+    // database
+    //   .ref("tags")
+    //   .set(["angular"])
+    //   .then(() => {
+    //     console.log("Etiketler eklendi");
+    //   })
+    //   .catch((e) => {
+    //     console.log("hata", e);
+    //   });
+    console.log("kayıt eklendi")
+  })
+  .catch((e) => {
+    console.log("hata", e);
+  });
+
+  database.ref().update({
+    title: "Blog title 2",
+    description:"hebele hübele",
+    // author:{
+    //   name: "hshshah",
+    //   surname: "lkjsdhv"
+    // }
+    "author/name" : "yhdeyey",
+    imgUrl: "hahahaha"
+  })
+
+
+  database.ref("author").update({
+    name: "hahaha",
+    surname:"hahaha"
+    
+  })
+
+
+
+
+// database.ref().set(null);
+
 
 // database
 //   .ref("title")
@@ -66,12 +91,12 @@ const database = firebase.database();
 //   });
 
 
-database
-  .ref(" ")
-  .remove()
-  .then(() => {
-    console.log("Başarılı");
-  })
-  .catch((e) => {
-    console.log("err");
-  });
+// database
+//   .ref(" ")
+//   .remove()
+//   .then(() => {
+//     console.log("Başarılı");
+//   })
+//   .catch((e) => {
+//     console.log("err");
+//   });
