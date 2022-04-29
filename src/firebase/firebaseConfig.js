@@ -100,3 +100,31 @@ database
 //   .catch((e) => {
 //     console.log("err");
 //   });
+
+
+// database.ref()
+// .once("value")
+// .then((snapshot) =>{
+//   const blog = snapshot.val();
+//   console.log(blog)
+
+// }).catch((e) => {
+//   console.log("eroor")
+// })
+
+database.ref().on("value", (snapshot) => {
+  const blog = snapshot.val();
+  console.log(blog)
+})
+
+setTimeout(() => {
+  database.ref("title").set("updated 1")
+}, 3000);
+
+setTimeout(() => {
+  database.ref().off(); 
+}, 6000);
+
+setTimeout(() => {
+  database.ref("title").set("updated 3")
+}, 9000);
