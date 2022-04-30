@@ -19,112 +19,70 @@ const app = initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database
-  .ref()
-  .set({
-    title: "Blog Title",
-    description: "Blog Description",
-    author: {
-      name: "Miray",
-      surname: "Kaymak",
-    },
-  })
-  .then(() => {
-    // database
-    //   .ref("tags")
-    //   .set(["angular"])
-    //   .then(() => {
-    //     console.log("Etiketler eklendi");
-    //   })
-    //   .catch((e) => {
-    //     console.log("hata", e);
-    //   });
-    console.log("kayıt eklendi")
-  })
-  .catch((e) => {
-    console.log("hata", e);
-  });
+const blogs = {
+  101: {
+    id: "1",
+    title: "bir",
+  },
+  102: {
+    id: "2",
+    title: "iki",
+  },
+};
 
-  database.ref().update({
-    title: "Blog title 2",
-    description:"hebele hübele",
-    // author:{
-    //   name: "hshshah",
-    //   surname: "lkjsdhv"
-    // }
-    "author/name" : "yhdeyey",
-    imgUrl: "hahahaha"
-  })
+const users = {
+  hivda: {
+    name: "hivda",
+    surname: "kaymak",
+  },
+  ayaz: {
+    name: "ayaz",
+    surname: "kaymak",
+  },
+};
 
+// database.ref().set({
+//   blog,
+//   users,
+// });
 
-  database.ref("author").update({
-    name: "hahaha",
-    surname:"hahaha"
-    
-  })
-
-
-
-
-// database.ref().set(null);
-
-
-// database
-//   .ref("title")
-//   .remove()
-//   .then(() => {
-//     console.log("Başarılı");
-//   })
-//   .catch((e) => {
-//     console.log("err");
-//   });
-
-
-// database
-//   .ref("outhor/name")
-//   .remove()
-//   .then(() => {
-//     console.log("Başarılı");
-//   })
-//   .catch((e) => {
-//     console.log("err");
-//   });
-
-
-// database
-//   .ref(" ")
-//   .remove()
-//   .then(() => {
-//     console.log("Başarılı");
-//   })
-//   .catch((e) => {
-//     console.log("err");
-//   });
-
-
-// database.ref()
-// .once("value")
-// .then((snapshot) =>{
-//   const blog = snapshot.val();
-//   console.log(blog)
-
-// }).catch((e) => {
-//   console.log("eroor")
-// })
-
-database.ref().on("value", (snapshot) => {
-  const blog = snapshot.val();
-  console.log(blog)
+database.ref("blogs/g4h44j5h").set({
+  id:"45434",
+  title:"hahahah",
 })
 
-setTimeout(() => {
-  database.ref("title").set("updated 1")
-}, 3000);
+database.ref("products").push({
+  name: "samsung",
+  price: 300,
+  isApproved : true
+})
 
-setTimeout(() => {
-  database.ref().off(); 
-}, 6000);
+database.ref("products").push({
+  name: "samsung",
+  price: 300,
+  isApproved : true
+})
 
-setTimeout(() => {
-  database.ref("title").set("updated 3")
-}, 9000);
+database.ref("products").push({
+  name: "samsung",
+  price: 300,
+  isApproved : true
+})
+
+database.ref("blogs").once("value").then((snapshot) => {
+  console.log(snapshot.val());
+}) 
+
+database.ref("users").once("value").then((snapshot) => {
+  console.log(snapshot.val());
+}) 
+
+// database.ref("blogs").push({
+//   id: "3",
+//   title: "blog 3"
+// })
+
+// database.ref("users").push({
+//   id: "3",
+//   title: "user 3"
+// })
