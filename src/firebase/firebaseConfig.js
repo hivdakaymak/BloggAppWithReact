@@ -19,70 +19,70 @@ const app = initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-const blogs = {
-  101: {
-    id: "1",
-    title: "bir",
-  },
-  102: {
-    id: "2",
-    title: "iki",
-  },
-};
+database
+  .ref("products")
+  .once("value")
+  .then((snapshot) => {
+    const products = [];
+    snapshot.forEach((products) => {
+      products.push({
+        id: product.key,
+        ...product.val,
+      });
+    });
 
-const users = {
-  hivda: {
-    name: "hivda",
-    surname: "kaymak",
-  },
-  ayaz: {
-    name: "ayaz",
-    surname: "kaymak",
-  },
-};
+    console.log(snapshot.val());
+  });
 
-// database.ref().set({
-//   blog,
-//   users,
-// });
 
-database.ref("blogs/g4h44j5h").set({
-  id:"45434",
-  title:"hahahah",
-})
+  database.ref("products").on("value", (snapshot) => {
 
-database.ref("products").push({
-  name: "samsung",
-  price: 300,
-  isApproved : true
-})
+    const products = [];
+    snapshot.forEach((products) => {
+      products.push({
+        id: product.key,
+        ...product.val,
+      });
+    });
 
-database.ref("products").push({
-  name: "samsung",
-  price: 300,
-  isApproved : true
-})
+    console.log(products);
 
-database.ref("products").push({
-  name: "samsung",
-  price: 300,
-  isApproved : true
-})
+  })
 
-database.ref("blogs").once("value").then((snapshot) => {
-  console.log(snapshot.val());
-}) 
 
-database.ref("users").once("value").then((snapshot) => {
-  console.log(snapshot.val());
-}) 
+  database.ref("products").on("child_removed", (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+  })
 
-// database.ref("blogs").push({
-//   id: "3",
-//   title: "blog 3"
+
+  database.ref("products").on("child_changed", (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+  })
+
+
+  database.ref("products").on("child_added", (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+  })
+
+
+
+
+
+
+// database.ref("products").push({
+//   name: "samsung",
+//   price: 300,
+//   isApproved : true
 // })
 
-// database.ref("users").push({
-//   id: "3",
-//   title: "user 3"
+// database.ref("products").push({
+//   name: "samsung",
+//   price: 300,
+//   isApproved : true
+// })
+
+// database.ref("products").push({
+//   name: "samsung",
+//   price: 300,
+//   isApproved : true
 // })
