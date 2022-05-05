@@ -7,8 +7,8 @@ import ContactPage from '../components/ContactPage'
 import NotFoundPage from '../components/NotFoundPage'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import AddBlogPage from '../compenents/AddBlogPage'
-import EditBlogPage from '../compenents/EditBlogPage'
+import AddBlogPage from '../components/AddBlogPage'
+import EditBlogPage from '../components/EditBlogPage'
 
 const AppRouter = () => {
     return (
